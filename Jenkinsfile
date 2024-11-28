@@ -30,9 +30,13 @@ pipeline {
             }
             steps {
                 sh '''
+                    test -f build/index.html
                     npm test
                 '''
             }
         }
+    }
+    post {
+        junit 'test-results/junit.xml'
     }
 }
